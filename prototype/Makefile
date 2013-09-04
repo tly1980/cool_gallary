@@ -17,11 +17,11 @@ styles: $(SASS_SRC)/*.sass
 
 dist:
 	mkdir -p ./dist/vendor
-	rsync -r ./vendor/. ./dist/vendor/.
-	cp $(HTML) ../public/.
-	mkdir -p ../public/js/apps/cross-widget/
-	rsync -r ./res/. ../public/js/apps/cross-widget/res/.
-	rsync -r ./dist/. ../public/js/apps/cross-widget/.
+	mkdir -p ./dist/res
+	rsync -r ./res ./dist/res
+	rsync -r ./src/vendor/. ./dist/vendor/.
+	mkdir -p ../gal/js/apps/gal/
+	rsync -r ./dist/. ../gal/js/apps/gal/.
 
 
 tpl: $(TEMPLATES)
