@@ -1,8 +1,5 @@
-define ['./base'], (Base)->
+base = require './base'
+class LayoutView extends base.BaseView
+	
 
-	class LayoutView extends Base.BaseView		
-		
-
-	return {
-		'LayoutView': LayoutView,
-	}
+exports.LayoutView = LayoutView

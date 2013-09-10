@@ -8,7 +8,7 @@ DIST=./dist
 
 all: js tpl styles dist
 
-js: ./src/*.coffee
+js: $(SRC)/*.coffee
 	coffee -o $(DIST) -c $(SRC)
 
 styles: $(SASS_SRC)/*.sass
@@ -25,7 +25,10 @@ dist:
 
 
 tpl: $(TEMPLATES)
-	tpl2module -s $(TEMPLATES_DIR) -o $(DIST)/tpl --amdjs
+	tpl2module -s $(TEMPLATES_DIR) -o $(DIST)/tpls -t "exports={{{content}}};"
+
+bundle: js tpl
+	browserify $(DIST)/main.js > $(DIST)/bundle.js
 
 # constant making is time-consuming
 # maybe not a good idea to put it to all
